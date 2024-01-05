@@ -1,0 +1,17 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Verify SSH connection
+        run: ssh-keyscan -H ${{secrets.HOST}} >> ~/.ssh/known_hosts
+
+      - name: Connect to VSP
+        run: sshpass -p ${{secrets.PASSWORD}} ssh -v chirag@${{secrets.HOST}} 'echo "Connected to VSP successfully!"'
