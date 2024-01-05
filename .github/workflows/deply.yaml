@@ -19,7 +19,7 @@ jobs:
         run: ssh-keyscan -H ${{secrets.HOST}} >> ~/.ssh/known_hosts
 
       - name: Connect to VSP
-        run: sshpass -p ${{secrets.PASSWORD}} ssh -v chirag@${{secrets.HOST}} 'echo "Connected to VSP successfully!"'
+        run: sshpass -p ${{secrets.PASSWORD}} ssh chirag@${{secrets.HOST}} 'echo "Connected to VSP successfully!" && pwd'
 
       - name: clone this test repo
         run: git clone https://github.com/Chirag482/test.git
