@@ -10,6 +10,11 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+
       - name: Verify SSH connection
         run: ssh-keyscan -H ${{secrets.HOST}} >> ~/.ssh/known_hosts
 
