@@ -23,5 +23,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} # Your server's SSH private key
           script: |
             cd marengo_client
-            pwd
-            ls
+            pm2 status
